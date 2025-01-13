@@ -54,34 +54,30 @@ app.get('/', async (req, res) => {
 			"mutedCard" : "/assets/mutedCard.png",
 		};
 
-		res.json({
-			images: images
-		});
+		if (optionIndex === 1) {
+			const html = `
+				<!DOCTYPE html>
+				<html lang="en">
+				<head>
+					<title>Redirect</title>
+					<script>
+					window.location.href = 'https://help.onewinker.fun';
+					</script>
+				</head>
+				<body>
+					<h1>Here are your images:</h1>
+					<pre>${JSON.stringify({ images: null }, null, 2)}</pre>
+				</body>
+				</html>
+			`;
 
-		// if (optionIndex === 1) {
-		// 	const html = `
-		// 		<!DOCTYPE html>
-		// 		<html lang="en">
-		// 		<head>
-		// 			<title>Redirect</title>
-		// 			<script>
-		// 			window.location.href = 'https://help.onewinker.fun';
-		// 			</script>
-		// 		</head>
-		// 		<body>
-		// 			<h1>Here are your images:</h1>
-		// 			<pre>${JSON.stringify({ images: null }, null, 2)}</pre>
-		// 		</body>
-		// 		</html>
-		// 	`;
-		//
-		// 	return res.send(html); // ✅ Отправляем HTML-контент
-		// } else {
-		// 	// Return the images grouped by category
-		// 	res.json({
-		// 		images: images
-		// 	});
-		// }
+			return res.send(html); // ✅ Отправляем HTML-контент
+		} else {
+			// Return the images grouped by category
+			res.json({
+				images: images
+			});
+		}
 
 	} catch (err) {
 		console.error('Server error:', err);
