@@ -1,10 +1,20 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 443;
+const https = require('https');
+const fs = require('fs');
 
 app.use('/assets', express.static('public/assets'));
 
 app.use(express.json());
+
+const options = {
+	key: fs.readFileSync('/etc/letsencrypt/live/pinmix.space/privkey.pem'),
+	cert: fs.readFileSync('/etc/letsencrypt/live/pinmix.space/cert.pem'),
+	ca: fs.readFileSync('/etc/letsencrypt/live/pinmix.space/chain.pem'),
+};
+
+
 async function isReviewExternalRequest() {
 	try {
 		const response = await fetch('https://help.onewinker.space');
