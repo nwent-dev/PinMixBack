@@ -1,0 +1,19 @@
+{
+  "name": "PinMix",
+  "version": "1.0.0",
+  "description": "Backend service for MostMine application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "asd",
+  "license": "asd",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^2.6.7",
+    "geoip-lite": "^1.4.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
