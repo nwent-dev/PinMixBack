@@ -89,4 +89,6 @@ app.get('/', async (req, res) => {
 	}
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+https.createServer(options, app).listen(PORT, () => {
+	console.log(`Server running on https://pinmix.space`);
+});
