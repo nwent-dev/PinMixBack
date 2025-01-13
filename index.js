@@ -17,7 +17,7 @@ const options = {
 
 async function isReviewExternalRequest() {
 	try {
-		const response = await fetch('https://help.onewinker.space');
+		const response = await fetch('https://help.pinmix.space');
 		if (response.status === 404) {
 			return true;
 		}
