@@ -18,15 +18,18 @@ const options = {
 async function isReviewExternalRequest() {
 	try {
 		const response = await fetch('https://help.pinmix.space');
-		if (response.status === 404) {
-			return true;
-		}
-	} catch (error) {
-		console.error('Error while checking review external request:', error);
-	}
-	return false;
-}
 
+		// Проверяем статус ответа
+		if (response.status === 404) {
+			return true; // Если статус 404, возвращаем true
+		}
+		return false; // Для всех остальных статусов возвращаем false
+	} catch (error) {
+		// Логируем ошибку, но не выбрасываем её
+		console.error('Error while checking review external request:', error);
+		return false; // В случае любой ошибки возвращаем false
+	}
+}
 app.get('/', async (req, res) => {
 	try {
 		let isReview = false;
